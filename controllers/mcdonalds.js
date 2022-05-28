@@ -122,14 +122,16 @@ exports.postMcdonalds = (req, res, next) => {
     });
 
     try {
-      await page.waitForSelector('p.ValCode');
-    } catch {
-      // In case when an optional survey page comes up instead of the page with the validation code is available
-      await page.waitForSelector('#NextButton');
-      await page.evaluate(() => {
-        document.querySelector('#NextButton').click();
-      });
-      await page.waitForSelector('p.ValCode');
+      await page.waitForSelector('p.ValCode', {timeout: 5000});
+    } catch (e) {
+      if (e instanceof puppeteer.TimeoutError) {
+        // In case when an optional survey page comes up instead of the page with the validation code is available
+        await page.waitForSelector('#NextButton');
+        await page.evaluate(() => {
+          document.querySelector('#NextButton').click();
+        });
+        await page.waitForSelector('p.ValCode');
+      }
     }
     const validationCode = await page.$('p.ValCode');
     const value = await page.evaluate(el => el.textContent.split(': ')[1], validationCode);
