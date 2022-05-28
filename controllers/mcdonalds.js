@@ -130,8 +130,8 @@ exports.postMcdonalds = (req, res, next) => {
           document.querySelector('#NextButton').click();
         });
         await page.waitForSelector('p.ValCode');
-      }
     }
+    
     const validationCode = await page.$('p.ValCode');
     const value = await page.evaluate(el => el.textContent.split(': ')[1], validationCode);
     await browser.close();
