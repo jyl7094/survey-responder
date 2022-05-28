@@ -8,7 +8,9 @@ exports.getMcdonalds = (req, res, next) => {
 
 exports.postMcdonalds = (req, res, next) => {
   async function responder() {
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+      args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    });
     const page = await browser.newPage();
     await page.goto('https://www.mcdvoice.com/');
     await page.type('#CN1', req.body.field1);
