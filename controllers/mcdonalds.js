@@ -122,7 +122,7 @@ exports.postMcdonalds = (req, res, next) => {
     });
 
     try {
-      await page.waitForSelector('p.ValCode', {timeout: 5000});
+      await page.waitForSelector('p.ValCode', {timeout: 3000});
     } catch (e) {
       if (e instanceof TimeoutError) {
         // In case when an optional survey page comes up instead of the page with the validation code is available
