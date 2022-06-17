@@ -137,9 +137,13 @@ exports.postMcdonalds = (req, res, next) => {
     await browser.close();
     return Promise.resolve(value);
   }
-  responder().then(result => {
-    res.render('result', {
-      vc: result
+  try {
+    responder().then(result => {
+      res.render('result', {
+        vc: result
+      });
     });
-  });
+  } catch (e) {
+    res.status(408).render('408');
+  }
 }
