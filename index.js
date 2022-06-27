@@ -1,4 +1,4 @@
-require('dotenv').config();
+// require('dotenv').config();
 
 const path = require('path');
 
@@ -27,4 +27,3 @@ mongoose
   .catch((err) => {
     console.log(err);
   });
-  
