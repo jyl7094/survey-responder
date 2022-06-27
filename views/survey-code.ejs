@@ -9,7 +9,7 @@
             <div class="card mb-4 rounded-3 shadow-sm h-100">
                 <div class="card-body">
                     <form
-                        action="<% if (name === 'McDonald\'s') { %>mcdonalds/result<% } else { %>panda-express/result<% } %>"
+                        action="<% if (name === 'McDonald\'s') { %>/mcdonalds/loading<% } else { %>/panda-express/result<% } %>"
                         method="POST" class="justify-content-center">
                         <input type="text" size="<% if (name === 'McDonald\'s') { %>5<% } else { %>4<% } %>"
                             minlength="<% if (name === 'McDonald\'s') { %>5<% } else { %>4<% } %>"

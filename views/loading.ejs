@@ -1,0 +1,27 @@
+<%- include('./includes/head.ejs') %>
+<h1 class="display-4 fw-normal">Loading</span></h1>
+<div class="row py-4">
+    <div class="col-auto mx-auto">
+        <div class="loader"></div>
+    </div>
+</div>
+<form class="invisible" action="/mcdonalds/result" method="POST">
+    <input type="text" name="field1" id="field1" value="<%= field1 %>"> 
+    <input type="text" name="field2" id="field2" value="<%= field2 %>">
+    <input type="text" name="field3" id="field3" value="<%= field3 %>"> 
+    <input type="text" name="field4" id="field4" value="<%= field4 %>"> 
+    <input type="text" name="field5" id="field5" value="<%= field5 %>"> 
+    <input type="text" name="field6" id="field6" value="<%= field6 %>">
+</form>
+<script>
+    function send_data() {
+        document.forms[0].submit();
+    }
+    
+    window.onload = () => {
+        send_data();
+    }
+</script>
+</div>
+</header>
+<%- include('./includes/end.ejs') %>;
