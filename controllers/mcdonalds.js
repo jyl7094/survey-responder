@@ -40,6 +40,7 @@ exports.postMcdonaldsResult = async (req, res, next) => {
     await page.type('#CN6', req.body.field6);
     await page.click('#NextButton');
     // await page.waitForSelector('#R000455\\.2');
+    let wait = null;
     try {
       wait = await awaitWithTimeout(1000, page.waitForSelector('#R000455\\.2'));
     } catch (error) {
