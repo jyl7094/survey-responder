@@ -39,7 +39,6 @@ exports.postMcdonaldsResult = async (req, res, next) => {
     await page.type('#CN5', req.body.field5);
     await page.type('#CN6', req.body.field6);
     await page.click('#NextButton');
-    // await page.waitForSelector('#R000455\\.2');
     let wait = null;
     try {
       wait = await awaitWithTimeout(1000, page.waitForSelector('#R000455\\.2'));
@@ -146,7 +145,7 @@ exports.postMcdonaldsResult = async (req, res, next) => {
     }
     const validationCode = await page.$('p.ValCode');
     const value = await page.evaluate(
-      (elem) => elem.textContent.split(': ')[1],
+      (el) => el.textContent.split(': ')[1],
       validationCode
     );
     await browser.close();
